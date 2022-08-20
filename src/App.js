@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { NavBar } from './components/NavBar';
+import { ItemListContainer } from './components/ItemListContainer';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#2a4154',
+      main: '#001b2b',
+      dark: '#000000',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      light: '#65a3ff',
+      main: '#1d75d3',
+      dark: '#004aa1',
+      contrastText: '#ffffff',
+    },
+    badge: {
+      main: '#002884',
+      contrastText: '#fff',
+    }
+  },
+  typography: {
+    fontFamily: {
+      
+    }
+  }
+});
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <NavBar/>
+      <ItemListContainer greeting={'¡Saludos!'}/>
+    </ThemeProvider>
   );
 }
 
