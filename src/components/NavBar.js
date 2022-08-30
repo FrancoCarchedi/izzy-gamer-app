@@ -6,7 +6,7 @@ import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
 import MuiLink from "@mui/material/Link";
 import { CartWidget } from "./CartWidget";
-
+import Brand from "../../src/assets/imgs/brand/brand.svg";
 
 const pages = ['Hardware', 'Periféricos', 'Monitores'];
 
@@ -17,9 +17,10 @@ export const NavBar = () => {
       <MuiAppBar position="static">
         <MuiContainer maxWidth="xl">
           <MuiToolbar disableGutters>
-            <MuiTypography>
+            <img src={Brand} alt="brand"></img>
+            {/* <MuiTypography>
               IzzyGamer
-            </MuiTypography>
+            </MuiTypography> */}
 
             <MuiBox sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
               {pages.map( (page) => (
