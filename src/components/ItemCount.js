@@ -14,7 +14,7 @@ export const ItemCount = ({stock, initial}) => {
   const [counter, setCounter] = useState(initial)
   
   const handleCounterRemove = () => {
-    counter > 0 ? setCounter(counter -1) : setCounter(counter)
+    counter > 1 ? setCounter(counter -1) : setCounter(counter)
   }
 
   const handleCounterAdd = () => {
