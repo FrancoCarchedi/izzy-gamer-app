@@ -1,22 +1,29 @@
-import MuiContainer from '@mui/material/Container';
-import MuiGrid from '@mui/material/Grid';
-import { ItemCount } from './ItemCount';
-import { ProductsCategories } from "./ProductsCategories"
+import { useState, useEffect } from 'react';
+import { ItemList } from './ItemList';
+import itemsJson from "../data.json";
 
-export const ItemListContainer = ( {greeting} ) => {
+export const ItemListContainer = () => {
+
+  const [items, setItem] = useState([])
+
+  //Función para obtener la data del archivo json, con promise
+  const getItems = (data, time) => new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      data? resolve(data) : reject("Error")
+    }, time)
+  })
+
+  useEffect(() => {
+    getItems(itemsJson, 2000)
+    .then((res)=> {
+      setItem(res)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }, [])
 
   return (
-    <MuiContainer maxWidth="xl">
-      <MuiGrid container spacing={2} sx={{ padding: 2 }}>
-        <MuiGrid item xs={3}>
-          <ProductsCategories/>
-        </MuiGrid>  
-        <MuiGrid item xs={9}>
-          <h1>{greeting} Aquí vendrá el listado de productos</h1>
-          {/* Temporalmente se monta el componente ItemCount, luego se quitará y se incluirá dentro del detalle del item */}
-          <ItemCount stock={5} initial={1}></ItemCount>
-        </MuiGrid>
-      </MuiGrid>
-    </MuiContainer>
+    <ItemList items={items}/>
   )
 }

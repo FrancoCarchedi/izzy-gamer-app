@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import MuiBox from '@mui/material/Box';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
@@ -12,11 +12,9 @@ import SecondaryMuiListItem from '../styled-components/SecondaryMuiListItem';
 import MuiDivider from '@mui/material/Divider';
 
 export const ProductsCategories = () => {
-
-  const categories = ['Motherboards', 'Procesadores', 'Placas de video', 'Almacenamiento', 'Gabinetes']
+  const hardwareCategories = ['Motherboards', 'Procesadores', 'Placas de video', 'Fuentes', 'Gabinetes']
 
   return (
-
     <MuiBox>
       <MuiAccordion>
         <MuiAccordionSummary
@@ -27,7 +25,7 @@ export const ProductsCategories = () => {
         <MuiDivider></MuiDivider>
         <MuiAccordionDetails sx={{padding: 0, marginTop: 2}}>
           <MuiBox>
-          {categories.map( (cat) => (
+          {hardwareCategories.map( (cat) => (
             <MuiAccordion key={cat}>
               <MuiAccordionSummary
                 expandIcon={<MuiExpandMoreIcon color='secondary'/>}

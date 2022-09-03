@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "AMD Ryzen 5 7600x",
+    "description": "",
+    "price": "$ 34.530",
+    "URLImg": "https://i.postimg.cc/tJn59fDR/1536834-amd-ryzen-5-7000-series-PIB-angle-1260x709-0.webp"
+  },
+  {
+    "id": 2,
+    "name": "AMD Ryzen 7 7700x",
+    "description": "",
+    "price": "$ 67.840",
+    "URLImg": "https://i.postimg.cc/SQXFXxvR/1536834-amd-ryzen-7-7000-series-PIB-angle-1260x709-0.webp"
+  },
+  {
+    "id": 3,
+    "name": "AMD Ryzen 9 7900x",
+    "description": "",
+    "price": "$ 88.240",
+    "URLImg": "https://i.postimg.cc/4nC1y5F6/1536834-amd-ryzen-9-7000-series-PIB-angle-1260x709.webp"
+  },
+  {
+    "id": 4,
+    "name": "AMD Ryzen 9 7950x",
+    "description": "",
+    "price": "$ 97.900",
+    "URLImg": "https://i.postimg.cc/4nC1y5F6/1536834-amd-ryzen-9-7000-series-PIB-angle-1260x709.webp"
+  }
+]

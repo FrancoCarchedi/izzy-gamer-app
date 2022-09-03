@@ -9,7 +9,7 @@ import MuiRemoveIcon from '@mui/icons-material/Remove';
 import MuiAddIcon from '@mui/icons-material/Add';
 import MuiButton from '@mui/material/Button';
 
-export const ItemCount = ({stock, initial}) => {
+export const ItemCount = ({stock, initial, onAdd}) => {
 
   const [counter, setCounter] = useState(initial)
   
@@ -40,13 +40,13 @@ export const ItemCount = ({stock, initial}) => {
             marginY: 1
             }}
         >
-          <MuiIconButton color='secondary' onClick={() => handleCounterRemove()}>
+          <MuiIconButton color='secondary' onClick={() => handleCounterRemove()} {...counter === 1 ? {disabled: true} : {disabled: false}}>
             <MuiRemoveIcon/>
           </MuiIconButton>
           <MuiTypography>
             {counter}
           </MuiTypography>
-          <MuiIconButton color='secondary' onClick={() => handleCounterAdd()}>
+          <MuiIconButton color='secondary' onClick={() => handleCounterAdd()} {...counter === stock ? {disabled: true} : {disabled: false}}>
             <MuiAddIcon/>
           </MuiIconButton>
         </MuiBox>
