@@ -1,29 +1,30 @@
 import { useState, useEffect } from 'react';
 import { ItemList } from './ItemList';
-import itemsJson from "../data.json";
+import { getItems } from '../utilities/getItems.js'
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = () => {
 
-  const [items, setItem] = useState([])
-
-  //Función para obtener la data del archivo json, con promise
-  const getItems = (data, time) => new Promise ((resolve, reject) => {
-    setTimeout(() => {
-      data? resolve(data) : reject("Error")
-    }, time)
+  const [items, setItem] = useState({
+    data: [],
+    loading: true
   })
 
-  useEffect(() => {
-    getItems(itemsJson, 2000)
+  const { id } = useParams()
+
+  useEffect(() => { 
+    getItems(id, 2000)
     .then((res)=> {
-      setItem(res)
+      setItem({data: res, loading: false})
     })
     .catch((err)=>{
       console.log(err)
     })
-  }, [])
+  }, [id])
+
+  console.log(items.loading)
 
   return (
-    <ItemList items={items}/>
+    <ItemList items={items.data} loading={items.loading}/>
   )
 }

@@ -1,14 +1,27 @@
-import React from "react";
 import MuiBox from '@mui/material/Box';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiContainer from '@mui/material/Container';
 import MuiToolbar from '@mui/material/Toolbar';
+import MuiButton from '@mui/material/Button';
 import MuiTypography from '@mui/material/Typography';
-import MuiLink from "@mui/material/Link";
+import { Link } from 'react-router-dom';
 import { CartWidget } from "./CartWidget";
 import Brand from "../../src/assets/imgs/brand/brand.svg";
 
-const pages = ['Hardware', 'Periféricos', 'Monitores'];
+const links = [
+  {
+    "label": "Hardware",
+    "link": "/category/hardware"
+  },
+  {
+    "label": "Periféricos",
+    "link": "/category/perifericos"
+  },
+  {
+    "label": "Monitores",
+    "link": "/category/monitores"
+  }
+]
 
 export const NavBar = () => {
   
@@ -17,23 +30,20 @@ export const NavBar = () => {
       <MuiAppBar position="static">
         <MuiContainer maxWidth="xl">
           <MuiToolbar disableGutters>
-            <img src={Brand} alt="brand"></img>
-            {/* <MuiTypography>
-              IzzyGamer
-            </MuiTypography> */}
+            <Link to={`/`}>
+              <img src={Brand} alt="brand"></img>
+            </Link>
 
             <MuiBox sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-              {pages.map( (page) => (
-              <MuiLink
-                href="#"
-                underline="none"
-                variant="h6"
-                key={page}
-                sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}
-              >
-                <MuiTypography>{page}</MuiTypography>
-              </MuiLink>
-              ))}
+            {links.map( link => (
+              <Link to={link.link} key={link.label}>
+                <MuiButton sx={{ my: 2, color: 'white', display: 'block', mx: 2}}>
+                  <MuiTypography>
+                  {link.label}
+                  </MuiTypography>             
+                </MuiButton>
+              </Link>
+            ) )}
             </MuiBox>
 
             <MuiBox sx={{ flexGrow: 0 }}>

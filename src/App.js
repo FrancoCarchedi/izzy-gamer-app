@@ -1,10 +1,8 @@
 import './App.css';
-import MuiContainer from '@mui/material/Container';
-import MuiGrid from '@mui/material/Grid';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { NavBar } from './components/NavBar';
+import { ItemDetailContainer } from './components/ItemDetailContainer';
 import { ItemListContainer } from './components/ItemListContainer';
-import { ProductsCategories } from './components/ProductsCategories';
 
 const theme = createTheme({
   palette: {
@@ -26,8 +24,9 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: {
-      
+    button: {
+      textTransform: 'none',
+      textDecoration: 'none'
     }
   }
 });
@@ -35,19 +34,15 @@ const theme = createTheme({
 function App() {
 
   return (
-    <ThemeProvider theme={theme}>
-      <NavBar/>
-      <MuiContainer maxWidth="xl">
-        <MuiGrid container spacing={2} sx={{ padding: 2 }}>
-          <MuiGrid item xs={3}>
-            <ProductsCategories/>
-          </MuiGrid>
-          <MuiGrid item xs={9}>
-            <ItemListContainer/>
-          </MuiGrid>
-        </MuiGrid>
-      </MuiContainer>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+      <Routes>
+        <Route exact path='/' element={<ItemListContainer/>}/>
+        <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+        <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
+      </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

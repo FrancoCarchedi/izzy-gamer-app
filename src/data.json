@@ -1,30 +1,50 @@
 [
   {
     "id": 1,
-    "name": "AMD Ryzen 5 7600x",
-    "description": "",
+    "name": "Procesador AMD Ryzen 5 7600x",
+    "category": "hardware",
+    "description": "Rendimiento de juego puro. Obtenga el procesador de juegos de 6 núcleos creado para una acción de juego intensa.",
     "price": "$ 34.530",
     "URLImg": "https://i.postimg.cc/tJn59fDR/1536834-amd-ryzen-5-7000-series-PIB-angle-1260x709-0.webp"
   },
   {
     "id": 2,
-    "name": "AMD Ryzen 7 7700x",
-    "description": "",
+    "name": "Procesador AMD Ryzen 7 7700x",
+    "category": "hardware",
+    "description": "El procesador de escritorio dominante de juegos. Lleva a tu equipo a la victoria con el mejor procesador de juegos AMD de 8 núcleos.",
     "price": "$ 67.840",
     "URLImg": "https://i.postimg.cc/SQXFXxvR/1536834-amd-ryzen-7-7000-series-PIB-angle-1260x709-0.webp"
   },
   {
     "id": 3,
-    "name": "AMD Ryzen 9 7900x",
-    "description": "",
+    "name": "Procesador AMD Ryzen 9 7900x",
+    "category": "hardware",
+    "description": "El potente procesador de escritorio para juegos y transmisión. Obtenga la ventaja competitiva con el último procesador entusiasta para jugadores, para creadores, para todos.",
     "price": "$ 88.240",
     "URLImg": "https://i.postimg.cc/4nC1y5F6/1536834-amd-ryzen-9-7000-series-PIB-angle-1260x709.webp"
   },
   {
     "id": 4,
-    "name": "AMD Ryzen 9 7950x",
-    "description": "",
+    "name": "Procesador AMD Ryzen 9 7950x",
+    "category": "hardware",
+    "description": "Lo mejor para jugar y crear. El potente procesador de 16 núcleos puede hacerlo todo para los jugadores y creadores más exigentes.",
     "price": "$ 97.900",
     "URLImg": "https://i.postimg.cc/4nC1y5F6/1536834-amd-ryzen-9-7000-series-PIB-angle-1260x709.webp"
+  },
+  {
+    "id": 5,
+    "name": "Auriculares Lightspeed Logitech G733 K/DA",
+    "category": "perifericos",
+    "description": "Los auriculares in ear G733 K/DA están diseñados para el universo alternativo de League of Legends K/DA. Para una experiencia gaming completa y envolvente en PC y consolas.",
+    "price": "$ 31.999",
+    "URLImg": "https://logitechar.vteximg.com.br/arquivos/ids/157917-450-450/981-000989.png?v=637526456117400000"
+  },
+  {
+    "id": 6,
+    "name": "Monitor Gaming 24' FHD 144Hz Curvo",
+    "category": "monitores",
+    "description": "Experiencia de juego inmersiva con pantalla curva. Juego fluido con frecuencia de actualización de 144 Hz y AMD FreeSync.",
+    "price": "$ 68,999",
+    "URLImg": "https://images.samsung.com/is/image/samsung/p6pim/ar/lc24rg50fzlczb/gallery/ar-c24rg5-433672-lc24rg50fzlczb-533475219?$1300_1038_PNG$"
   }
 ]

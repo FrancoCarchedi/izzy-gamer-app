@@ -4,17 +4,22 @@ import MuiCardContent from '@mui/material/CardContent';
 import MuiCardMedia from '@mui/material/CardMedia';
 import MuiTypography from '@mui/material/Typography';
 import MuiCardActionArea from '@mui/material/CardActionArea';
+import { Link } from 'react-router-dom';
 
-export const Item = ({name, price, image}) => {
+export const Item = ({id, name, price, image}) => {
+
   return (
-    <MuiCard sx={{ maxWidth: 320 }}>
+    <Link to={`/item/${id}`}>
+    <MuiCard sx={{ maxWidth: 300 }}>
       <MuiCardActionArea>
         <MuiCardMedia
           component="img"
           image={image}
+          width={300}
+          height={200}
           alt={name}
         />
-        <MuiCardContent>
+        <MuiCardContent sx={{height: 80, display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
           <MuiTypography gutterBottom component="div" sx={{fontWeight: 500}}>
             {name}
           </MuiTypography>
@@ -24,5 +29,6 @@ export const Item = ({name, price, image}) => {
         </MuiCardContent>
       </MuiCardActionArea>
     </MuiCard>
+    </Link>
   )
 }

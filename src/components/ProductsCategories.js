@@ -1,4 +1,3 @@
-import React from 'react';
 import MuiBox from '@mui/material/Box';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
@@ -11,7 +10,8 @@ import MuiListItemText from '@mui/material/ListItemText';
 import SecondaryMuiListItem from '../styled-components/SecondaryMuiListItem';
 import MuiDivider from '@mui/material/Divider';
 
-export const ProductsCategories = () => {
+export const ProductsCategories = ({productsType}) => {
+
   const hardwareCategories = ['Motherboards', 'Procesadores', 'Placas de video', 'Fuentes', 'Gabinetes']
 
   return (
