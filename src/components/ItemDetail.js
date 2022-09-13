@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import MuiBox from '@mui/material/Box';
 import MuiGrid from '@mui/material/Grid';
 import MuiTypography from '@mui/material/Typography';
@@ -6,6 +7,15 @@ import ItemCount from './ItemCount';
 import { Layout } from "./Layout"
 
 export const ItemDetail = ({name, description, price, URLImg, loading}) => {
+
+  const [quantity, setQuantity] = useState()
+
+  const onAdd = (quantityToAdd) => {
+    setQuantity(quantityToAdd)
+  }
+
+  console.log(quantity)
+
   return (
     <Layout>
       {loading?
@@ -26,7 +36,7 @@ export const ItemDetail = ({name, description, price, URLImg, loading}) => {
           <MuiTypography sx={{marginY: 2}} variant={'h6'} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'body'}>{description}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{price}</MuiTypography>
-          <ItemCount stock={7}/>
+          <ItemCount stock={7} onAdd={onAdd}/>
         </MuiGrid>
       </MuiGrid>
       }

@@ -8,13 +8,8 @@ import MuiIconButton from '@mui/material/IconButton';
 import MuiRemoveIcon from '@mui/icons-material/Remove';
 import MuiAddIcon from '@mui/icons-material/Add';
 import MuiButton from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 
-const ItemCount = ({stock, initial=1, onAdd="Aun no está implementado el carro xD"}) => {
+const ItemCount = ({stock, initial=1, onAdd}) => {
 
   const [counter, setCounter] = useState(initial)
   
@@ -25,19 +20,6 @@ const ItemCount = ({stock, initial=1, onAdd="Aun no está implementado el carro 
   const handleCounterAdd = () => {
     counter < stock ? setCounter(counter + 1) : setCounter(counter)
   }
-
-  const [open, setOpen] = useState(false);
-  
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
-
-  
-
     
   return (
     <MuiCard sx={{maxWidth: 200}} elevation={0}>
@@ -67,29 +49,7 @@ const ItemCount = ({stock, initial=1, onAdd="Aun no está implementado el carro 
             <MuiAddIcon/>
           </MuiIconButton>
         </MuiBox>
-        <MuiButton variant='contained' fullWidth onClick={handleClickOpen}>Agregar al carrito</MuiButton>
-
-        <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        >
-        <DialogTitle id="alert-dialog-title">
-          {"¡Nosotros también queremos que compres!"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            El carrito no está implementado aún, por lo que te pedimos disculpas.
-            Muy pronto podrás comprar este y otros productos más.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <MuiButton onClick={handleClose} autoFocus>
-            <MuiTypography color='secondary'>De acuerdo</MuiTypography>
-          </MuiButton>
-        </DialogActions>
-        </Dialog>
+        <MuiButton variant='contained' fullWidth onClick={() => onAdd(counter)}>Agregar al carrito</MuiButton>
       </MuiCardActions>
     </MuiCard>
     
