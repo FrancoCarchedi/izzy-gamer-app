@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react'
-import { CartContext } from '../context/CartContext'
+import { useState } from 'react'
+import { useCart } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import MuiBox from '@mui/material/Box'
 import MuiGrid from '@mui/material/Grid'
@@ -9,11 +9,9 @@ import MuiButton from '@mui/material/Button'
 import { ItemCount } from './ItemCount'
 import { Layout } from "./Layout"
 
-
-
 export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
 
-  const item = useContext( CartContext );
+  const item = useCart();
   const [quantity, setQuantity] = useState(0)
 
   const onAdd = (quantityToAdd) => {
@@ -40,7 +38,6 @@ export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
           <MuiTypography sx={{marginY: 2}} variant={'h6'} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'body'}>{description}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{price}</MuiTypography>
-          
           {quantity < 1?
           <>
             <ItemCount stock={876} onAdd={onAdd}/>

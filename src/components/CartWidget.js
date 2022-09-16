@@ -2,12 +2,11 @@ import MuiTooltip from '@mui/material/Tooltip';
 import MuiIconButton from "@mui/material/IconButton";
 import MuiBadge from '@mui/material/Badge';
 import MuiShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useContext } from 'react'
-import { CartContext } from '../context/CartContext'
+import { useCart } from '../context/CartContext';
 
 export const CartWidget = () => {
 
-  const item = useContext( CartContext );
+  const item = useCart();
   
   return (
       <MuiTooltip title="Carrito">
