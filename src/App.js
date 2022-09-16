@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
 import { ItemListContainer } from './components/ItemListContainer';
+import Cart from './components/Cart';
+import CartProvider from './context/CartProvider';
 
 const theme = createTheme({
   palette: {
@@ -34,15 +36,18 @@ const theme = createTheme({
 function App() {
 
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-      <Routes>
-        <Route exact path='/' element={<ItemListContainer/>}/>
-        <Route exact path='/category/:id' element={<ItemListContainer/>}/>
-        <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
-      </Routes>
-      </ThemeProvider>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+        <Routes>
+          <Route exact path='/' element={<ItemListContainer/>}/>
+          <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+          <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
+          <Route exact path='/cart' element={<Cart/>}/>
+        </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

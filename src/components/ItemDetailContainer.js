@@ -20,6 +20,7 @@ export const ItemDetailContainer = () => {
 
   return (
     <ItemDetail 
+    id={item.data.id}
     name={item.data.name} 
     description={item.data.description} 
     price={item.data.price} 

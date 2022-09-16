@@ -4,4 +4,20 @@
   font-family: 'Poppins', sans-serif;
 }
 
-a { text-decoration: none; }
+a { text-decoration: none;}
+
+a>button>p:hover {
+  color: #1d75d3;
+}
+
+.active>button>p {
+  color: #65a3ff;
+}
+
+.link-disabled {
+  pointer-events: none;
+}
+
+.link-enabled {
+  pointer-events: auto;
+}

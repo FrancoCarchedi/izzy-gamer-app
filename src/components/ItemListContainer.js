@@ -22,8 +22,6 @@ export const ItemListContainer = () => {
     })
   }, [id])
 
-  console.log(items.loading)
-
   return (
     <ItemList items={items.data} loading={items.loading}/>
   )

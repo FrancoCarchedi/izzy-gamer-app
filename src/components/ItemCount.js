@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MuiBox from '@mui/material/Box';
 import MuiCard from '@mui/material/Card';
 import MuiCardHeader from '@mui/material/CardHeader';
@@ -9,7 +9,7 @@ import MuiRemoveIcon from '@mui/icons-material/Remove';
 import MuiAddIcon from '@mui/icons-material/Add';
 import MuiButton from '@mui/material/Button';
 
-const ItemCount = ({stock, initial=1, onAdd}) => {
+export const ItemCount = ({stock, initial=1, onAdd}) => {
 
   const [counter, setCounter] = useState(initial)
   
@@ -55,5 +55,3 @@ const ItemCount = ({stock, initial=1, onAdd}) => {
     
   )
 }
-
-export default ItemCount;
