@@ -11,7 +11,7 @@ export const CartWidget = () => {
   return (
       <MuiTooltip title="Carrito">
         <MuiIconButton sx={{ p: 0 }}>
-          <MuiBadge badgeContent={item.cart.length} color="secondary">
+          <MuiBadge badgeContent={item.cart.map(item => item.quantity).reduce((itemA, itemB) => itemA + itemB)} color="secondary">
             <MuiShoppingCartIcon sx={{
               color: 'primary.contrastText'
             }}/>
