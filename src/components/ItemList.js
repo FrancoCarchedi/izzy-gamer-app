@@ -8,7 +8,7 @@ export const ItemList = ( {items = [], loading} ) => {
   return (
     <Layout>
       {loading?
-      <MuiGrid container pacing={1} sx={{ padding: 2, marginTop: 2, flexDirection: 'row', justifyContent: 'center'}}>
+      <MuiGrid container sx={{ padding: 2, marginTop: 2, flexDirection: 'row', justifyContent: 'center'}}>
         <MuiCircularProgress color='secondary'/>
       </MuiGrid>
       :
@@ -17,7 +17,7 @@ export const ItemList = ( {items = [], loading} ) => {
           <ProductsCategories/>
         </MuiGrid>
         <MuiGrid item xs={9}>
-          <MuiGrid container spacing={3}>
+          <MuiGrid container columnSpacing={8} rowSpacing={3}>
             {items.map( i => 
               <MuiGrid item xs={4} key={i.id}>
                 <Item id={i.id} name={i.name} price={i.price} image={i.URLImg}/>

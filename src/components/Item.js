@@ -10,13 +10,13 @@ export const Item = ({id, name, price, image}) => {
 
   return (
     <Link to={`/item/${id}`}>
-    <MuiCard sx={{ maxWidth: 300 }}>
+    <MuiCard>
       <MuiCardActionArea>
         <MuiCardMedia
           component="img"
           image={image}
           width={300}
-          height={200}
+          height={300}
           alt={name}
         />
         <MuiCardContent sx={{height: 80, display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>

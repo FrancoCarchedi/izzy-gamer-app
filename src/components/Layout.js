@@ -2,14 +2,17 @@ import React from 'react'
 import MuiContainer from '@mui/material/Container';
 import { NavBar } from './NavBar'
 import Footer from './Footer';
+import { Paper } from '@mui/material';
 
 export const Layout = ({children}) => {
   return (
     <>
     <NavBar/>
-    <MuiContainer maxWidth="xl" sx={{display: 'flex', flexDirection: 'column', minHeight: '100vh',}}>
-      {children}
-    </MuiContainer>
+      <Paper sx={{backgroundColor: '#f5f5f5'}}>
+        <MuiContainer maxWidth="xl" sx={{display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#f5f5f5'}}>
+          {children}
+        </MuiContainer>
+      </Paper>
     <Footer/>
     </>
   )

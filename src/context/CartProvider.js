@@ -9,7 +9,7 @@ const CartProvider = ({ children }) => {
 
   /////////////////////////////////////////////////////////////////////////////
   //FUNCIONES
-  const isInCart = (id) => cart.find(item => item.item.id === id) ? true : false
+  const isInCart = (id) => cart.some(item => item.item.id === id)
 
   const addItem = (item, quantity) => {
     if (isInCart(item.id)) {
