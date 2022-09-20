@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import MuiBox from '@mui/material/Box';
-import MuiCard from '@mui/material/Card';
-import MuiCardHeader from '@mui/material/CardHeader';
-import MuiCardActions from '@mui/material/CardActions';
 import MuiTypography from '@mui/material/Typography';
 import MuiIconButton from '@mui/material/IconButton';
 import MuiRemoveIcon from '@mui/icons-material/Remove';
@@ -22,36 +19,29 @@ export const ItemCount = ({stock, initial=1, onAdd}) => {
   }
     
   return (
-    <MuiCard sx={{maxWidth: 200}} elevation={0}>
-      <MuiCardHeader
-       title={<MuiTypography variant='body1'>Stock disponible: {stock}</MuiTypography>}
-       sx={{ textAlign: 'start', padding: 0}}
+    <MuiBox>
+      <MuiBox 
+        sx={{
+          width: 140,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          }}
       >
-      </MuiCardHeader>
-      <MuiCardActions sx={{ display: 'flex', flexDirection: 'column', padding: 0 }}>
-        <MuiBox 
-          sx={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginY: 1
-            }}
-        >
-          <MuiIconButton color='secondary' onClick={handleCounterRemove} disabled={counter === 1}>
-            <MuiRemoveIcon/>
-          </MuiIconButton>
-          <MuiTypography>
-            {counter}
-          </MuiTypography>
-          <MuiIconButton color='secondary' onClick={handleCounterAdd} disabled={counter === stock}>
-            <MuiAddIcon/>
-          </MuiIconButton>
-        </MuiBox>
-        <MuiButton variant='contained' fullWidth onClick={() => onAdd(counter)}>Agregar al carrito</MuiButton>
-      </MuiCardActions>
-    </MuiCard>
+        <MuiIconButton color='secondary' onClick={handleCounterRemove} disabled={counter === 1}>
+          <MuiRemoveIcon/>
+        </MuiIconButton>
+        <MuiTypography>
+          {counter}
+        </MuiTypography>
+        <MuiIconButton color='secondary' onClick={handleCounterAdd} disabled={counter === stock}>
+          <MuiAddIcon/>
+        </MuiIconButton>
+      </MuiBox>
+      {onAdd &&
+      <MuiButton variant='contained' onClick={() => onAdd(counter)}>Agregar al carrito</MuiButton>
+      }
+    </MuiBox>
     
   )
 }

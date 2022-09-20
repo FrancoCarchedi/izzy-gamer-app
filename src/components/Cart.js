@@ -1,30 +1,35 @@
+import { useCart } from '../context/CartContext'
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Layout } from './Layout';
 import { ItemCount } from './ItemCount';
 
-
-
-
 const Cart = () => {
+
+  const itemsAdded = useCart();
+  console.log(itemsAdded.cart)
+
   return (
     <Layout>
       <Typography variant='h4'>Carrito de compras</Typography>
-        <Card sx={{ display: 'flex'}}>
+        {itemsAdded.cart.map( i =>
+        <Card sx={{ display: 'flex', alignItems: 'center', marginY: 1}} key={i.item.id}>
           <CardMedia component="img"
-          image={"https://images.samsung.com/is/image/samsung/p6pim/ar/lc24rg50fzlczb/gallery/ar-c24rg5-433672-lc24rg50fzlczb-533475219?$1300_1038_PNG$"}
+          image={i.item.URLImg}
           sx={{ width: 200}}
           alt={'name'}
           > 
           </CardMedia>
           <CardContent sx={{display: 'flex'}}>
-            <Typography>Monitor Samsung</Typography>
-            <ItemCount></ItemCount>
+            <Typography variant='h6'>Monitor Samsung</Typography>
+            {/* <ItemCount></ItemCount> */}
+          <ItemCount></ItemCount>
           </CardContent>
-        </Card>    
+        </Card> 
+        )}
+           
     </Layout>
   )
 }

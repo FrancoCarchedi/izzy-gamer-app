@@ -23,15 +23,20 @@ const CartProvider = ({ children }) => {
 
   const removeItem = (itemId) => {
     setCart(cart.filter(product => product.item.id !== itemId))
+    if (!cart) {
+      setCart([])
+    }
   }
 
   const clear = () => {
     setCart([])
   }
 
+  const itemsInCart = () => cart.map(item => item.quantity).reduce((itemA, itemB) => itemA + itemB, 0)
+
 
   return (
-    <CartContext.Provider value={{isInCart, addItem, removeItem, clear, cart}}>
+    <CartContext.Provider value={{isInCart, addItem, removeItem, clear, itemsInCart,cart}}>
       { children }
     </CartContext.Provider>
   )
