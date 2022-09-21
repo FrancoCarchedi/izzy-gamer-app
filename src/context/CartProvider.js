@@ -4,8 +4,6 @@ import { CartContext } from "./CartContext"
 const CartProvider = ({ children }) => {
 
   const [cart, setCart] = useState([])
-  //Console.log para visualizar carro en consola y hacer pruebas
-  console.log(cart)
 
   /////////////////////////////////////////////////////////////////////////////
   //FUNCIONES
@@ -28,6 +26,16 @@ const CartProvider = ({ children }) => {
     }
   }
 
+  const removeItemQuantity = (itemId, quantity) => {
+    if (isInCart(itemId.id)) {
+      setCart(cart.map (product => {
+        return product.item.id === itemId.id? {...product, quantity: product.quantity - quantity} : product
+      }));
+    } else {
+      setCart([...cart, { itemId, quantity }])
+    }
+  }
+
   const clear = () => {
     setCart([])
   }
@@ -36,7 +44,7 @@ const CartProvider = ({ children }) => {
 
 
   return (
-    <CartContext.Provider value={{isInCart, addItem, removeItem, clear, itemsInCart,cart}}>
+    <CartContext.Provider value={{isInCart, addItem, removeItem, clear, itemsInCart, removeItemQuantity,cart}}>
       { children }
     </CartContext.Provider>
   )

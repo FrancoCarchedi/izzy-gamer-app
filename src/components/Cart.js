@@ -9,7 +9,6 @@ import { ItemCount } from './ItemCount';
 const Cart = () => {
 
   const itemsAdded = useCart();
-  console.log(itemsAdded.cart)
 
   return (
     <Layout>
@@ -24,8 +23,7 @@ const Cart = () => {
           </CardMedia>
           <CardContent sx={{display: 'flex'}}>
             <Typography variant='h6'>Monitor Samsung</Typography>
-            {/* <ItemCount></ItemCount> */}
-          <ItemCount></ItemCount>
+            <ItemCount itemsInCart={i}></ItemCount>
           </CardContent>
         </Card> 
         )}
