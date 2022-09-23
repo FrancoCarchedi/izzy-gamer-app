@@ -4,11 +4,11 @@ const useCounter = ( initial=1 ) => {
 
   const [counter, setCounter] = useState(initial)
 
-  const increment = ( quantity ) => {
-    setCounter(counter+quantity)
+  const increment = () => {
+    setCounter(counter+1)
   }
 
-  const decrement = ( quantity ) => {
+  const decrement = () => {
     setCounter(counter-1)
   }
 

@@ -12,10 +12,15 @@ import { Layout } from "./Layout"
 export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
 
   const item = useCart();
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const onAdd = (quantityToAdd) => {
-    setQuantity(quantityToAdd)
+    if (quantityToAdd === 0) {
+      setQuantity(1)
+    }
+    else (
+      setQuantity(quantityToAdd)
+    )
   }
 
   return (
@@ -38,20 +43,10 @@ export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
           <MuiTypography sx={{marginY: 2}} variant={'h6'} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'body'}>{description}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{price}</MuiTypography>
-          {quantity < 1?
-          <>
-            <ItemCount stock={876} onAdd={onAdd}/>
-            {/* Este botón está para probar la función "removeItem" del context */}
-            <Link to={`/cart`} className={!item.isInCart(id)? "link-disabled" : "link-enabled"}>
-              <MuiButton variant='contained' color='secondary' disabled={!item.isInCart(id)} onClick={() => item.removeItem(id)} sx={{marginY: 2}}>Remover del carrito</MuiButton>
-            </Link>
-          </>
-          :
-          //Este botón está para probar la función "addItem" del context
+          <ItemCount stock={876} onAdd={onAdd}/>
           <Link to={`/cart`}>
-            <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Finalizar compra</MuiButton>
+            <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Agregar al carro</MuiButton>
           </Link>
-          }
         </MuiGrid>
       </MuiGrid>
       }
