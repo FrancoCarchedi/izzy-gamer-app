@@ -8,6 +8,8 @@ import MuiCircularProgress from '@mui/material/CircularProgress'
 import MuiButton from '@mui/material/Button'
 import { ItemCount } from './ItemCount'
 import { Layout } from "./Layout"
+import formatNumber from '../utilities/formatNumber';
+
 
 export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
 
@@ -42,7 +44,7 @@ export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
         <MuiGrid item xs={6}>
           <MuiTypography sx={{marginY: 2}} variant={'h6'} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'body'}>{description}</MuiTypography>
-          <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{price}</MuiTypography>
+          <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{formatNumber(price)}</MuiTypography>
           <ItemCount stock={876} onAdd={onAdd}/>
           <Link to={`/cart`}>
             <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Agregar al carro</MuiButton>

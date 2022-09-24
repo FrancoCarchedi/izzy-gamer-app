@@ -1,17 +1,16 @@
-import itemsJson from "../data.json";
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
-export const getItems = (category, time) => new Promise ((resolve, reject) => {
+export const getItems = (category="") => {
 
-    const itemsByCategory = itemsJson.filter(items => items.category === category)
+    const querydb = getFirestore();
+
+    const items = collection(querydb, "products")
+    const itemsFiltered = query(items, where("category", "==", category))
     
-    const items = setTimeout(() => {
-      if (!category) {
-        itemsJson? resolve(itemsJson) : reject("Error")
-      }
-      else {
-        itemsJson? resolve(itemsByCategory) : reject("Error")
-      }
-    }, time)
-
-    return items
-})
+    if (category === "") {
+      return getDocs(items)
+    }
+    else {
+      return getDocs(itemsFiltered)
+    }
+}

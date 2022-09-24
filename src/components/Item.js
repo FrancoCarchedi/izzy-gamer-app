@@ -4,6 +4,7 @@ import MuiCardContent from '@mui/material/CardContent';
 import MuiCardMedia from '@mui/material/CardMedia';
 import MuiTypography from '@mui/material/Typography';
 import MuiCardActionArea from '@mui/material/CardActionArea';
+import formatNumber from '../utilities/formatNumber';
 import { Link } from 'react-router-dom';
 
 export const Item = ({id, name, price, image}) => {
@@ -24,7 +25,7 @@ export const Item = ({id, name, price, image}) => {
             {name}
           </MuiTypography>
           <MuiTypography variant="body1" color="secondary" sx={{fontWeight: 500}}>
-            {price}
+            {formatNumber(price)}
           </MuiTypography>
         </MuiCardContent>
       </MuiCardActionArea>
