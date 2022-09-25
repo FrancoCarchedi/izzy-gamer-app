@@ -46,9 +46,11 @@ const CartProvider = ({ children }) => {
   //Funcion para que CartWidget muestre la cantidad de productos agregados al carrito
   const itemsInCart = () => cart.map(item => item.quantity).reduce((itemA, itemB) => itemA + itemB, 0)
 
+  const totalPrice = () => cart.map(product => product.item.price * product.quantity).reduce((itemA, itemB) => itemA + itemB, 0)
+
 
   return (
-    <CartContext.Provider value={{isInCart, addItem, removeItem, clear, itemsInCart, removeItemQuantity,cart}}>
+    <CartContext.Provider value={{isInCart, addItem, removeItem, clear, itemsInCart, removeItemQuantity, totalPrice, cart}}>
       { children }
     </CartContext.Provider>
   )

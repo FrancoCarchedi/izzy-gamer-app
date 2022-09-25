@@ -22,7 +22,6 @@ export const ItemListContainer = () => {
   }, [id])
 
   return (
-    
     <ItemList items={items.data.map(p => p.data)} loading={items.loading}/>
   )
 }

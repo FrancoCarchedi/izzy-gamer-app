@@ -12,6 +12,7 @@ import MuiDivider from '@mui/material/Divider';
 
 export const ProductsCategories = ({productsType}) => {
 
+
   const hardwareCategories = ['Motherboards', 'Procesadores', 'Placas de video', 'Fuentes', 'Gabinetes']
 
   return (

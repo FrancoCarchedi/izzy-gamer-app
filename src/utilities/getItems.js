@@ -5,12 +5,13 @@ export const getItems = (category="") => {
     const querydb = getFirestore();
 
     const items = collection(querydb, "products")
-    const itemsFiltered = query(items, where("category", "==", category))
+    const itemsByCategory = query(items, where("category", "==", category))
+    // const itemsBySubcategory = query(items, where("category", "==", category), where("subcategory", "==", subcategory))
     
     if (category === "") {
       return getDocs(items)
     }
     else {
-      return getDocs(itemsFiltered)
+      return getDocs(itemsByCategory)
     }
 }

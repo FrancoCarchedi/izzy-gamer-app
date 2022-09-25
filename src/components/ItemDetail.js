@@ -45,10 +45,16 @@ export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
           <MuiTypography sx={{marginY: 2}} variant={'h6'} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'body'}>{description}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{formatNumber(price)}</MuiTypography>
+          {!item.isInCart(id)?
+          <>
           <ItemCount stock={876} onAdd={onAdd}/>
+          <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Agregar al carro</MuiButton>
+          </>
+          :
           <Link to={`/cart`}>
-            <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Agregar al carro</MuiButton>
+            <MuiButton variant='contained'>Finalizar compra</MuiButton>
           </Link>
+          }
         </MuiGrid>
       </MuiGrid>
       }

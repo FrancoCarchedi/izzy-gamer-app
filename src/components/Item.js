@@ -16,8 +16,8 @@ export const Item = ({id, name, price, image}) => {
         <MuiCardMedia
           component="img"
           image={image}
-          width={300}
-          height={300}
+          height={200}
+          sx={{objectFit: "contain"}}
           alt={name}
         />
         <MuiCardContent sx={{height: 80, display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
