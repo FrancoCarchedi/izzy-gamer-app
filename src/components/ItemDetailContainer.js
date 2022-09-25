@@ -13,8 +13,8 @@ export const ItemDetailContainer = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    getItem(parseInt(id), 2000)
-    .then(item => setItem ({data: item, loading: false}))
+    getItem(id)
+    .then(res => setItem({data: {id: res.id, ...res.data()}, loading: false}))
     .catch( (err) => {console.log(err)} )
   }, [id])
 

@@ -11,12 +11,13 @@ export const CartWidget = () => {
   return (
       <MuiTooltip title="Carrito">
         <MuiIconButton sx={{ p: 0 }}>
-          <MuiBadge badgeContent={item.cart.map(item => item.quantity).reduce((itemA, itemB) => itemA + itemB)} color="secondary">
+          <MuiBadge badgeContent={item.itemsInCart()} color="secondary">
             <MuiShoppingCartIcon sx={{
               color: 'primary.contrastText'
             }}/>
           </MuiBadge>
         </MuiIconButton>
       </MuiTooltip>
+      
   )
 }

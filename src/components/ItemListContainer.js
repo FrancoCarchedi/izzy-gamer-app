@@ -13,16 +13,15 @@ export const ItemListContainer = () => {
   const { id } = useParams()
 
   useEffect(() => { 
-    getItems(id, 2000)
-    .then((res)=> {
-      setItem({data: res, loading: false})
-    })
-    .catch((err)=>{
+    getItems(id)
+    .then(res =>
+      setItem({data: res.docs.map( product => ({data: {id: product.id, ...product.data()}}) ), loading: false}))
+    .catch( err => {
       console.log(err)
     })
   }, [id])
 
   return (
-    <ItemList items={items.data} loading={items.loading}/>
+    <ItemList items={items.data.map(p => p.data)} loading={items.loading}/>
   )
 }

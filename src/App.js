@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
 import { ItemListContainer } from './components/ItemListContainer';
@@ -44,6 +44,7 @@ function App() {
           <Route exact path='/category/:id' element={<ItemListContainer/>}/>
           <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
           <Route exact path='/cart' element={<Cart/>}/>
+          <Route exact path='/*' element={<Navigate to="/"/>}/>
         </Routes>
         </ThemeProvider>
       </BrowserRouter>

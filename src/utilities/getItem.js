@@ -1,12 +1,9 @@
-import itemsJson from "../data.json";
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
-export const getItem = (productId, time) => new Promise ((resolve, reject) => {
-    
-    const itemById = itemsJson.find( item => item.id === productId )
-    
-    const item = setTimeout(() => {
-        itemsJson? resolve(itemById) : reject("Error")
-    }, time)
+export const getItem = (productId) => {
 
+    const db = getFirestore();
+    
+    const item = getDoc(doc(db, "products", `${productId}`))
     return item
-})
+}

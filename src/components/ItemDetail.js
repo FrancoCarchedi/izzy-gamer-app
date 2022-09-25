@@ -8,14 +8,21 @@ import MuiCircularProgress from '@mui/material/CircularProgress'
 import MuiButton from '@mui/material/Button'
 import { ItemCount } from './ItemCount'
 import { Layout } from "./Layout"
+import formatNumber from '../utilities/formatNumber';
+
 
 export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
 
   const item = useCart();
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const onAdd = (quantityToAdd) => {
-    setQuantity(quantityToAdd)
+    if (quantityToAdd === 0) {
+      setQuantity(1)
+    }
+    else (
+      setQuantity(quantityToAdd)
+    )
   }
 
   return (
@@ -37,19 +44,15 @@ export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
         <MuiGrid item xs={6}>
           <MuiTypography sx={{marginY: 2}} variant={'h6'} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={'body'}>{description}</MuiTypography>
-          <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{price}</MuiTypography>
-          {quantity < 1?
+          <MuiTypography sx={{marginY: 2}} variant={'h6'} color={'secondary.main'} fontWeight={500}>{formatNumber(price)}</MuiTypography>
+          {!item.isInCart(id)?
           <>
-            <ItemCount stock={876} onAdd={onAdd}/>
-            {/* Este botón está para probar la función "removeItem" del context */}
-            <Link to={`/cart`} className={!item.isInCart(id)? "link-disabled" : "link-enabled"}>
-              <MuiButton variant='contained' color='secondary' disabled={!item.isInCart(id)} onClick={() => item.removeItem(id)} sx={{marginY: 2}}>Remover del carrito</MuiButton>
-            </Link>
+          <ItemCount stock={876} onAdd={onAdd}/>
+          <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Agregar al carro</MuiButton>
           </>
           :
-          //Este botón está para probar la función "addItem" del context
           <Link to={`/cart`}>
-            <MuiButton variant='contained' onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Finalizar compra</MuiButton>
+            <MuiButton variant='contained'>Finalizar compra</MuiButton>
           </Link>
           }
         </MuiGrid>
