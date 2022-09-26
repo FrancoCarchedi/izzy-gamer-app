@@ -28,6 +28,9 @@ const Cart = () => {
         <>
           <ItemsCart item={itemsAdded}></ItemsCart>
           <MuiTypography variant="h6" sx={{textAlign: 'end', marginY: 3}}>Precio total: <MuiTypography variant="h6" component={"span"} fontWeight={700} color="secondary">{formatNumber(itemsAdded.totalPrice())}</MuiTypography></MuiTypography>
+          <Link to={`/cart/checkout`}>
+            <MuiButton variant='contained' color='primary'>Finalizar compra</MuiButton>
+          </Link>
         </>   
         }
       </MuiContainer>

@@ -8,8 +8,14 @@ export const Layout = ({children}) => {
   return (
     <>
     <NavBar/>
-      <Paper sx={{backgroundColor: '#f5f5f5'}}>
-        <MuiContainer maxWidth="xl" sx={{display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#f5f5f5'}}>
+      <Paper sx={{backgroundColor: "#f5f5f5"}} elevation="none">
+        <MuiContainer maxWidth="xl" 
+        sx={{display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh', 
+        backgroundColor: '#f5f5f5', 
+        marginBottom: 2
+        }}>
           {children}
         </MuiContainer>
       </Paper>
