@@ -1,18 +1,11 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
-const sendOrder = () => {
-
-  const order = {
-    buyer: { },
-    items: [{}],
-    total: NaN
-  }
-
+const sendOrder = (order) => {
   const db = getFirestore();
 
   const ordersCollection = collection(db, "orders");
 
-  // addDoc(ordersCollection, order).then(({ id }) => console.log("nada")
+  return addDoc(ordersCollection, order)
 
 }
 

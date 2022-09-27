@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Layout } from './Layout';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -12,11 +13,24 @@ import MuiTextField from '@mui/material/TextField';
 import MuiButton from '@mui/material/Button';
 import MuiArrowBackIcon from '@mui/icons-material/ArrowBack';
 import formatNumber from '../utilities/formatNumber';
+// import sendOrder from '../utilities/sendOrder';
+
 
 const Order = () => {
 
   const itemsAdded = useCart();
-  console.log(itemsAdded)
+  const [nameValue, setNameValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+
+  const [order, setOrder] = useState({
+    buyer: {name: "", phone: "", email: ""},
+    items: [{name: "", quantity: 0, price: 0}],
+    total: 0
+  })
+
+  console.log(itemsAdded.cart)
+  console.log(order)
 
   return (
     <Layout>
@@ -44,6 +58,8 @@ const Order = () => {
                 required
                 id="outlined-required"
                 label="Nombre"
+                value={nameValue}
+                onChange={(e) => setNameValue(e.target.value)}
             />
             <MuiTextField
                 required
@@ -51,12 +67,16 @@ const Order = () => {
                 type="number"
                 autoComplete="off"
                 label="Teléfono"
+                value={phoneValue}
+                onChange={(e) => setPhoneValue(e.target.value)}
             />
             <MuiTextField
                 required
                 id="outlined-required"
                 type="email"
                 label="Correo electrónico"
+                value={emailValue}
+                onChange={(e) => setEmailValue(e.target.value)}
             />
             </MuiBox>
           </MuiGrid>
@@ -79,14 +99,23 @@ const Order = () => {
                   </MuiCardContent>
                 </MuiCard>
               )}
-              <MuiButton variant='contained' color='primary' sx={{width: 'adjust', alignSelf: 'end'}}>Cargar orden de compra</MuiButton>
+              <MuiButton variant='contained' color='primary' sx={{
+                width: 'adjust', 
+                alignSelf: 'end'
+                }}
+                onClick={() => {setOrder({
+                  buyer: {name: nameValue, phone: phoneValue, email: emailValue},
+                  items: itemsAdded.cart.map(i => ({name: i.item.name, quantity: i.quantity, price: i.item.price})),
+                  total: itemsAdded.totalPrice()
+                })}}
+                >
+                Cargar orden de compra
+              </MuiButton>
             </MuiBox>
-            
           </MuiGrid>
         </MuiGrid>
       </MuiContainer>
     </Layout>
-    
   )
 }
 
