@@ -12,9 +12,13 @@ import MuiCardContent from '@mui/material/CardContent';
 import MuiTextField from '@mui/material/TextField';
 import MuiButton from '@mui/material/Button';
 import MuiArrowBackIcon from '@mui/icons-material/ArrowBack';
+import MuiCollapse from '@mui/material/Collapse';
+import MuiAlert from '@mui/material/Alert';
+import MuiIconButton from '@mui/material/IconButton';
+import MuiCloseIcon from '@mui/icons-material/Close';
 import formatNumber from '../utilities/formatNumber';
+import sendOrder from '../utilities/sendOrder';
 // import sendOrder from '../utilities/sendOrder';
-
 
 const Order = () => {
 
@@ -22,6 +26,10 @@ const Order = () => {
   const [nameValue, setNameValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
+  const [open, setOpen] = useState({
+    isOpen: false,
+    idOrder: 0
+});
 
   const [order, setOrder] = useState({
     buyer: {name: "", phone: "", email: ""},
@@ -39,6 +47,25 @@ const Order = () => {
             <MuiTypography variant='body1'>Volver al carro</MuiTypography>
           </MuiButton>
         </Link>
+        <MuiCollapse in={open.isOpen}>
+          <MuiAlert 
+          action={
+            <MuiIconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setOpen({isOpen: false});
+              }}
+            >
+              <MuiCloseIcon fontSize="inherit" />
+            </MuiIconButton>
+          }
+          severity="success"
+          >
+            Orden de compra: <MuiTypography component={"span"} fontWeight={700}>{open.idOrder}</MuiTypography> — ¡Muchas gracias!
+          </MuiAlert>
+        </MuiCollapse>
         <MuiGrid container spacing={2}>
           <MuiGrid item xs={6}>
             <MuiBox
@@ -102,11 +129,14 @@ const Order = () => {
                 width: 'adjust', 
                 alignSelf: 'end'
                 }}
-                onClick={() => {setOrder({
+                onClick={() => {
+                  setOrder({
                   buyer: {name: nameValue, phone: phoneValue, email: emailValue},
                   items: itemsAdded.cart.map(i => ({name: i.item.name, quantity: i.quantity, price: i.item.price})),
                   total: itemsAdded.totalPrice()
-                })}}
+                  });
+                  sendOrder(order).then(({id}) => {setOpen({isOpen: true, idOrder: id})});
+                }}
                 >
                 Cargar orden de compra
               </MuiButton>
