@@ -29,7 +29,6 @@ const Order = () => {
     total: 0
   })
 
-  console.log(itemsAdded.cart)
   console.log(order)
 
   return (
