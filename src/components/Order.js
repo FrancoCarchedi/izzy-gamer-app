@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Layout } from './Layout';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -23,13 +23,6 @@ import sendOrder from '../utilities/sendOrder';
 const Order = () => {
 
   const itemsAdded = useCart();
-  const [nameValue, setNameValue] = useState("");
-  const [phoneValue, setPhoneValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [open, setOpen] = useState({
-    isOpen: false,
-    idOrder: 0
-});
 
   const [order, setOrder] = useState({
     buyer: {name: "", phone: "", email: ""},
@@ -37,7 +30,38 @@ const Order = () => {
     total: 0
   })
 
+  const [open, setOpen] = useState({
+    isOpen: false,
+    idOrder: 0
+  });
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: ""
+  })
+
+  const { name, phone, email } = form
+
+  const onInputChange = ({ target }) => {
+    const { name, value } = target
+    setForm({
+      ...form,
+      [ name ]: value
+    })
+  }
+
+  useEffect( () => {
+    setOrder({
+      buyer: {name: name, phone: phone, email: email},
+      items: itemsAdded.cart.map(i => ({name: i.item.name, quantity: i.quantity, price: i.item.price})),
+      total: itemsAdded.totalPrice()
+      });
+  }, [form, name, phone, email, itemsAdded])
+  
   console.log(order)
+
+  
 
   return (
     <Layout>
@@ -67,7 +91,7 @@ const Order = () => {
           </MuiAlert>
         </MuiCollapse>
         <MuiGrid container spacing={2}>
-          <MuiGrid item xs={6}>
+          <MuiGrid item xs={6} display={!itemsAdded.cart.length? "none" : "block"}>
             <MuiBox
             component="form"
             sx={{
@@ -83,9 +107,11 @@ const Order = () => {
             <MuiTextField
                 required
                 id="outlined-required"
+                autoComplete="off"
                 label="Nombre"
-                value={nameValue}
-                onChange={(e) => setNameValue(e.target.value)}
+                name="name"
+                value={ name }
+                onChange={ onInputChange }
             />
             <MuiTextField
                 required
@@ -93,20 +119,22 @@ const Order = () => {
                 type="number"
                 autoComplete="off"
                 label="Teléfono"
-                value={phoneValue}
-                onChange={(e) => setPhoneValue(e.target.value)}
+                name="phone"
+                value={ phone }
+                onChange={ onInputChange }
             />
             <MuiTextField
                 required
                 id="outlined-required"
                 type="email"
                 label="Correo electrónico"
-                value={emailValue}
-                onChange={(e) => setEmailValue(e.target.value)}
+                name="email"
+                value={ email }
+                onChange={ onInputChange }
             />
             </MuiBox>
           </MuiGrid>
-          <MuiGrid item xs={6}>
+          <MuiGrid item xs={6} display={!itemsAdded.cart.length? "none" : "block"}>
             <MuiTypography variant="h6" fontWeight={700} sx={{marginY: 2}}>Resumen del pedido</MuiTypography>
             <MuiBox sx={{display: "flex", flexDirection: "column"}}>
               {itemsAdded.cart.map(i => 
@@ -129,14 +157,16 @@ const Order = () => {
                 width: 'adjust', 
                 alignSelf: 'end'
                 }}
-                onClick={() => {
-                  setOrder({
-                  buyer: {name: nameValue, phone: phoneValue, email: emailValue},
-                  items: itemsAdded.cart.map(i => ({name: i.item.name, quantity: i.quantity, price: i.item.price})),
-                  total: itemsAdded.totalPrice()
-                  });
-                  sendOrder(order).then(({id}) => {setOpen({isOpen: true, idOrder: id})});
-                }}
+                onClick={ () => {
+                  if (name === "" || phone === "" || email === "") {
+                    alert("Por favor, completar con tus datos")
+                  } 
+                  else { 
+                    sendOrder(order).then( ({ id }) => {
+                      setOpen({ isOpen: true, idOrder: id }); 
+                      itemsAdded.clear()
+                    })} 
+                  }}
                 >
                 Cargar orden de compra
               </MuiButton>
