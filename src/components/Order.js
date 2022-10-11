@@ -61,8 +61,6 @@ const Order = () => {
   
   console.log(order)
 
-  
-
   return (
     <Layout>
       <MuiContainer>

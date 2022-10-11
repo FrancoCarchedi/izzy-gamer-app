@@ -11,7 +11,7 @@ import { Layout } from "./Layout"
 import formatNumber from "../utilities/formatNumber";
 
 
-export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
+export const ItemDetail = ({id, name, description, price, URLImg, stock, loading}) => {
 
   const item = useCart();
   const [quantity, setQuantity] = useState(1)
@@ -43,12 +43,13 @@ export const ItemDetail = ({id, name, description, price, URLImg, loading}) => {
         </MuiGrid>
         <MuiGrid item xs={6}>
           <MuiTypography sx={{marginY: 2}} variant={"h6"} fontWeight={700}>{name}</MuiTypography>
-          <MuiTypography sx={{marginY: 2}} variant={"body"}>{description}</MuiTypography>
+          <MuiTypography sx={{marginY: 2}} variant={"body1"}>{description}</MuiTypography>
+          <MuiTypography sx={{marginY: 2}} variant={"body1"}>Unidades disponibles: {stock}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={"h6"} color={"secondary.main"} fontWeight={500}>{formatNumber(price)}</MuiTypography>
           {!item.isInCart(id)?
           <MuiBox>
-          <ItemCount stock={876} onAdd={onAdd}/>
-          <MuiButton variant="contained" onClick={() => item.addItem({id, name, URLImg, price}, quantity)}>Agregar al carro</MuiButton>
+          <ItemCount stock={stock} onAdd={onAdd}/>
+          <MuiButton variant="contained" onClick={() => item.addItem({id, name, URLImg, stock, price}, quantity)}>Agregar al carro</MuiButton>
           </MuiBox>
           :
           <Link to={`/cart`}>

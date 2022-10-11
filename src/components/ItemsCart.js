@@ -31,8 +31,8 @@ const ItemsCart = ({item}) => {
                 <MuiRemoveIcon color="secondary">Quitar</MuiRemoveIcon>
               </MuiIconButton>
               <Typography variant="h6" sx={{marginX: 2}}>{i.quantity}</Typography>
-              <MuiIconButton onClick={() => item.addItem(i.item, 1)}>
-                <MuiAddIcon color="secondary"></MuiAddIcon>
+              <MuiIconButton color="secondary" onClick={() => item.addItem(i.item, 1)} disabled={i.quantity >= i.item.stock}>
+                <MuiAddIcon/>
               </MuiIconButton>
             </MuiBox>
             <Typography variant="body1" color="secondary" sx={{textAlign: "center"}}>{formatNumber(i.item.price * i.quantity)}</Typography>
