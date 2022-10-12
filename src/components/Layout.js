@@ -4,7 +4,7 @@ import { NavBar } from './NavBar'
 import Footer from './Footer';
 import { Paper } from '@mui/material';
 
-export const Layout = ({children}) => {
+const Layout = ({children}) => {
   return (
     <>
     <NavBar/>
@@ -23,3 +23,5 @@ export const Layout = ({children}) => {
     </>
   )
 }
+
+export default Layout

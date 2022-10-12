@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { ItemList } from './ItemList';
 import { getItems } from '../utilities/getItems.js'
-import { useParams } from 'react-router-dom';
+
 
 export const ItemListContainer = () => {
 
@@ -12,7 +13,7 @@ export const ItemListContainer = () => {
 
   const { id } = useParams()
 
-  useEffect(() => { 
+  useEffect(() => {
     getItems(id)
     .then(res =>
       setItem({data: res.docs.map( product => ({data: {id: product.id, ...product.data()}}) ), loading: false}))

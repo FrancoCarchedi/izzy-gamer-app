@@ -5,7 +5,7 @@ import MuiIconButton from '@mui/material/IconButton';
 import MuiRemoveIcon from '@mui/icons-material/Remove';
 import MuiAddIcon from '@mui/icons-material/Add';
 
-export const ItemCount = ({stock, onAdd}) => {
+const ItemCount = ({stock, onAdd}) => {
   //uso del custom Hook
   const {counter, increment, decrement} = useCounter();
     
@@ -32,3 +32,6 @@ export const ItemCount = ({stock, onAdd}) => {
     </MuiBox>
   )
 }
+
+
+export default ItemCount

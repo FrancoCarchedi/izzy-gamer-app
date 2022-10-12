@@ -1,9 +1,14 @@
-import { doc, updateDoc, getFirestore } from 'firebase/firestore';
+import { doc, updateDoc, getDoc, getFirestore } from 'firebase/firestore';
 
+//Esta función recibe los productos de la orden, y actualizará el stock
 const updateItem = (orderItems) => {
-  //recibe orderItems []
-  //Debe hacer un mapeo para extraerlos
-  //Por cada item recorrido, debe llamar al producto en firestore por el ID, y restarle lo comprado
+
+  const db = getFirestore();
+
+  orderItems.forEach(i => {
+    const productRef = doc(db, "products", `${i.id}`);
+    getDoc(productRef).then(o => updateDoc(productRef, {stock: o.data().stock - i.quantity}))
+  });
 
 }
 
