@@ -18,6 +18,7 @@ import MuiIconButton from '@mui/material/IconButton';
 import MuiCloseIcon from '@mui/icons-material/Close';
 import formatNumber from '../utilities/formatNumber';
 import sendOrder from '../utilities/sendOrder';
+import updateItem from '../utilities/updateItem';
 // import sendOrder from '../utilities/sendOrder';
 
 const Order = () => {
@@ -161,8 +162,9 @@ const Order = () => {
                   } 
                   else { 
                     sendOrder(order).then( ({ id }) => {
+                      updateItem(order.items);
                       setOpen({ isOpen: true, idOrder: id }); 
-                      itemsAdded.clear()
+                      itemsAdded.clear();
                     })} 
                   }}
                 >
