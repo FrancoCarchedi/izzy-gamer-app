@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Layout } from './Layout';
+import Layout from './Layout';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import MuiBox from '@mui/material/Box';
@@ -18,6 +18,7 @@ import MuiIconButton from '@mui/material/IconButton';
 import MuiCloseIcon from '@mui/icons-material/Close';
 import formatNumber from '../utilities/formatNumber';
 import sendOrder from '../utilities/sendOrder';
+import updateItem from '../utilities/updateItem';
 // import sendOrder from '../utilities/sendOrder';
 
 const Order = () => {
@@ -26,7 +27,7 @@ const Order = () => {
 
   const [order, setOrder] = useState({
     buyer: {name: "", phone: "", email: ""},
-    items: [{name: "", quantity: 0, price: 0}],
+    items: [{id: 0, name: "", quantity: 0, price: 0}],
     total: 0
   })
 
@@ -54,14 +55,10 @@ const Order = () => {
   useEffect( () => {
     setOrder({
       buyer: {name: name, phone: phone, email: email},
-      items: itemsAdded.cart.map(i => ({name: i.item.name, quantity: i.quantity, price: i.item.price})),
+      items: itemsAdded.cart.map(i => ({id: i.item.id, name: i.item.name, quantity: i.quantity, price: i.item.price})),
       total: itemsAdded.totalPrice()
       });
   }, [form, name, phone, email, itemsAdded])
-  
-  console.log(order)
-
-  
 
   return (
     <Layout>
@@ -161,10 +158,15 @@ const Order = () => {
                   if (name === "" || phone === "" || email === "") {
                     alert("Por favor, completar con tus datos")
                   } 
-                  else { 
+                  else {
+                    //Envia la orden
+                    //Actualiza el stock de cada producto
+                    //Muestra al usuario el ID de su orden
+                    //Vacia el carrito 
                     sendOrder(order).then( ({ id }) => {
+                      updateItem(order.items);
                       setOpen({ isOpen: true, idOrder: id }); 
-                      itemsAdded.clear()
+                      itemsAdded.clear();
                     })} 
                   }}
                 >

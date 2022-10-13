@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
-import { useCart } from "../context/CartContext"
-import { Layout } from "./Layout";
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import MuiTypography from "@mui/material/Typography";
-import MuiBox from "@mui/material/Box"
+import MuiBox from "@mui/material/Box";
 import MuiContainer from "@mui/material/Container";
-import MuiButton from "@mui/material/Button"
+import MuiButton from "@mui/material/Button";
+import Layout from "./Layout";
 import ItemsCart from "./ItemsCart";
 import formatNumber from "../utilities/formatNumber";
 

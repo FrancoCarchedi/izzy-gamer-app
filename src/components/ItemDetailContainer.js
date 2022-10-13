@@ -24,7 +24,8 @@ export const ItemDetailContainer = () => {
     name={item.data.name} 
     description={item.data.description} 
     price={item.data.price} 
-    URLImg={item.data.URLImg} 
+    URLImg={item.data.URLImg}
+    stock={item.data.stock} 
     loading={item.loading}
     />
   )

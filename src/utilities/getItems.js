@@ -1,5 +1,6 @@
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
+//Esta función obtiene todos los items, filtrando por categoría
 export const getItems = (category="") => {
 
     const querydb = getFirestore();
