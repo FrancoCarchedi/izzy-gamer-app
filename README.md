@@ -8,11 +8,11 @@ Material UI
 
 ## Sobres el proyecto
 
-Primer proyecto realizado por mi, utilizando React JS durante el curso en Coderhouse.
-Al comienzo fue muy importante el repaso de ciertos conceptos claves sobre Javascript, lo que facilitó luego empezar con React JS.
-Se utiliza Firestore como base de datos, a la cual se realizan las peticiones para obtener los productos y también cargar las ordenes de compra.
-Para la navegación se implementó Routing, aprovechando sus características para realizar filtrados por categoría de productos, y por ID de producto.
-Se incorporan eventos, Context, y técnicas de rendering.
+Primer proyecto realizado por mi, utilizando React JS durante el curso en Coderhouse.  
+Al comienzo fue muy importante el repaso de ciertos conceptos claves sobre Javascript, lo que facilitó luego empezar con React JS.  
+Se utiliza Firestore como base de datos, a la cual se realizan las peticiones para obtener los productos y también cargar las ordenes de compra.  
+Para la navegación se implementó Routing, aprovechando sus características para realizar filtrados por categoría de productos, y por ID de producto.  
+Se incorporan eventos, Context, y técnicas de rendering.  
 
 Deploy: https://izzy-gamer-app.vercel.app/
 
@@ -27,5 +27,5 @@ Mi objetivo es continuar trabajando en el proyecto e incorporar nuevas funcional
 
 ## Gracias por visitar mi proyecto
 
-Estoy muy feliz de seguir sumando conocimientos, y del proyecto que pude llevar a cabo con esta tecnología.
+Estoy muy feliz de seguir sumando conocimientos, y del proyecto que pude llevar a cabo con esta tecnología.  
 ¡Es momento de seguir codeando y crear aplicaciones!
