@@ -154,10 +154,10 @@ const Order = () => {
               </MuiTypography>
             </MuiBox>
           </MuiGrid>
-          <MuiButton variant='contained' color='primary' sx={{
+          <MuiButton variant="contained" color="primary" sx={{
                 marginTop: 2,
-                width: 'adjust', 
-                alignSelf: 'end'
+                display: !itemsAdded.cart.length? "none" : "flex",
+                width: "adjust", 
                 }}
                 onClick={ () => {
                   if (name === "" || phone === "" || email === "") {
