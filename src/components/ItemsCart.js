@@ -1,5 +1,4 @@
 import MuiBox from "@mui/material/Box";
-import MuiContainer from '@mui/material/Container';
 import MuiGrid from '@mui/material/Grid';
 import MuiTypography from "@mui/material/Typography";
 import MuiCard from "@mui/material/Card";

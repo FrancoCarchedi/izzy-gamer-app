@@ -19,7 +19,6 @@ import MuiCloseIcon from '@mui/icons-material/Close';
 import formatNumber from '../utilities/formatNumber';
 import sendOrder from '../utilities/sendOrder';
 import updateItem from '../utilities/updateItem';
-// import sendOrder from '../utilities/sendOrder';
 
 const Order = () => {
 
@@ -87,7 +86,7 @@ const Order = () => {
             Orden de compra: <MuiTypography component={"span"} fontWeight={700}>{open.idOrder}</MuiTypography> — ¡Muchas gracias!
           </MuiAlert>
         </MuiCollapse>
-        <MuiGrid container spacing={2}>
+        <MuiGrid container spacing={2} sx={{justifyContent: "end"}}>
           <MuiGrid item xs={12} sm={12} md={6} display={!itemsAdded.cart.length? "none" : "block"}>
             <MuiBox
             component="form"
