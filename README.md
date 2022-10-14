@@ -21,10 +21,10 @@ Se incorporan eventos, Context, y técnicas de rendering.
 
 Mi objetivo es continuar trabajando en el proyecto e incorporar nuevas funcionalidades, como por ejemplo:
 
-+Filtrado de productos por subcategorías
-+Buscador de productos
-+Identificación de usuario
-+Envío de mail con el detalle de la orden de compra
++ Filtrado de productos por subcategorías
++ Buscador de productos
++ Identificación de usuario
++ Envío de mail con el detalle de la orden de compra
 
 ## Gracias por visitar mi proyecto
 
