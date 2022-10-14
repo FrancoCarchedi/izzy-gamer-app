@@ -62,9 +62,9 @@ const Order = () => {
 
   return (
     <Layout>
-      <MuiContainer>
+      <MuiContainer sx={{marginY: 2}}>
         <Link to={`/cart`}>
-          <MuiButton color="secondary" startIcon={<MuiArrowBackIcon />} sx={{marginY: 1}}>
+          <MuiButton color="secondary" startIcon={<MuiArrowBackIcon />}>
             <MuiTypography variant='body1'>Volver al carro</MuiTypography>
           </MuiButton>
         </Link>
@@ -88,7 +88,7 @@ const Order = () => {
           </MuiAlert>
         </MuiCollapse>
         <MuiGrid container spacing={2}>
-          <MuiGrid item xs={6} display={!itemsAdded.cart.length? "none" : "block"}>
+          <MuiGrid item xs={12} sm={12} md={6} display={!itemsAdded.cart.length? "none" : "block"}>
             <MuiBox
             component="form"
             sx={{
@@ -100,7 +100,7 @@ const Order = () => {
             noValidate
             autoComplete="off"
             >
-            <MuiTypography variant='h6' sx={{marginY: 2}} fontWeight={700}>Información del cliente</MuiTypography>
+            <MuiTypography variant='h6' sx={{marginY: 2, textAlign: {xs: "center", sm: "start"}}} fontWeight={700}>Información del cliente</MuiTypography>
             <MuiTextField
                 required
                 id="outlined-required"
@@ -131,8 +131,8 @@ const Order = () => {
             />
             </MuiBox>
           </MuiGrid>
-          <MuiGrid item xs={6} display={!itemsAdded.cart.length? "none" : "block"}>
-            <MuiTypography variant="h6" fontWeight={700} sx={{marginY: 2}}>Resumen del pedido</MuiTypography>
+          <MuiGrid item xs={12} sm={12} md={6} display={!itemsAdded.cart.length? "none" : "block"}>
+            <MuiTypography variant="h6" fontWeight={700} sx={{marginY: 2, textAlign: {xs: "center", sm: "start"}}}>Resumen del pedido</MuiTypography>
             <MuiBox sx={{display: "flex", flexDirection: "column"}}>
               {itemsAdded.cart.map(i => 
                 <MuiCard key={i.item.id} sx={{display: "flex", padding: 2, marginBottom: 2, backgroundColor: "transparent"}}>
@@ -150,7 +150,13 @@ const Order = () => {
                   </MuiCardContent>
                 </MuiCard>
               )}
-              <MuiButton variant='contained' color='primary' sx={{
+              <MuiTypography sx={{textAlign: "end"}}>
+                Precio total <MuiTypography color="secondary" component={"p"}>{formatNumber(itemsAdded.totalPrice())}</MuiTypography>
+              </MuiTypography>
+            </MuiBox>
+          </MuiGrid>
+          <MuiButton variant='contained' color='primary' sx={{
+                marginTop: 2,
                 width: 'adjust', 
                 alignSelf: 'end'
                 }}
@@ -172,8 +178,6 @@ const Order = () => {
                 >
                 Cargar orden de compra
               </MuiButton>
-            </MuiBox>
-          </MuiGrid>
         </MuiGrid>
       </MuiContainer>
     </Layout>

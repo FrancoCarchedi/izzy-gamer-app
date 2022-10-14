@@ -7,11 +7,10 @@ import MuiTypography from "@mui/material/Typography";
 import MuiCircularProgress from "@mui/material/CircularProgress";
 import MuiButton from "@mui/material/Button";
 import ItemCount from "./ItemCount";
-import Layout from "./Layout"
+import Layout from "./Layout";
 import formatNumber from "../utilities/formatNumber";
 
-
-export const ItemDetail = ({id, name, description, price, URLImg, stock, loading}) => {
+const ItemDetail = ({id, name, description, price, URLImg, stock, loading}) => {
 
   const item = useCart();
   const [quantity, setQuantity] = useState(1)
@@ -28,20 +27,20 @@ export const ItemDetail = ({id, name, description, price, URLImg, stock, loading
   return (
     <Layout>
       {loading?
-      <MuiGrid container pacing={1} sx={{ padding: 2, marginTop: 2, flexDirection: "row", justifyContent: "center"}}>
+      <MuiGrid container spacing={1} sx={{ padding: 2, marginTop: 2, flexDirection: "row", justifyContent: "center"}}>
         <MuiCircularProgress color="secondary"/>
       </MuiGrid>
       :
-      <MuiGrid container spacing={2} sx={{ padding: 2, flexDirection: "row", justifyContent: "center"}}>
-        <MuiGrid item xs={6} sx={{textAlign: "center"}}>
+      <MuiGrid container spacing={2} sx={{ padding: 2, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+        <MuiGrid item xs={12} sm={12} md={6} sx={{textAlign: "center", }}>
           <MuiBox component="img"
             sx={{
-            width: 500
+            maxWidth: {xs: 350}
             }}
             alt={name}
             src={URLImg}/>
         </MuiGrid>
-        <MuiGrid item xs={6}>
+        <MuiGrid item xs={12} sm={8} md={6} sx={{display: "flex", flexDirection: "column", alignItems: {xs: "center", sm: "center", md: "start"}}}>
           <MuiTypography sx={{marginY: 2}} variant={"h6"} fontWeight={700}>{name}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={"body1"}>{description}</MuiTypography>
           <MuiTypography sx={{marginY: 2}} variant={"body1"}>Unidades disponibles: {stock}</MuiTypography>
@@ -62,3 +61,5 @@ export const ItemDetail = ({id, name, description, price, URLImg, stock, loading
     </Layout>
   )
 }
+
+export default ItemDetail

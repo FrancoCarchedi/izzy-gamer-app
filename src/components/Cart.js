@@ -14,8 +14,8 @@ const Cart = () => {
 
   return (
     <Layout>
-      <MuiContainer maxWidth="lg">
-        <MuiTypography variant="h5" sx={{marginY: 3, textAlign: "start"}}>Carrito de compras</MuiTypography>
+      <MuiContainer maxWidth="lg" sx={{marginY: 3}}>
+        <MuiTypography variant="h5" sx={{textAlign: {xs: "center", sm: "start"}}}>Carrito de compras</MuiTypography>
         {!itemsAdded.cart.length?
         <MuiBox sx={{textAlign: "center"}}>
           <MuiTypography variant="body1" sx={{marginY: 3, textAlign: "center"}}>No hay productos en el carrito</MuiTypography>

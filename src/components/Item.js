@@ -1,11 +1,10 @@
-import * as React from 'react';
+import { Link } from 'react-router-dom';
 import MuiCard from '@mui/material/Card';
 import MuiCardContent from '@mui/material/CardContent';
 import MuiCardMedia from '@mui/material/CardMedia';
 import MuiTypography from '@mui/material/Typography';
 import MuiCardActionArea from '@mui/material/CardActionArea';
 import formatNumber from '../utilities/formatNumber';
-import { Link } from 'react-router-dom';
 
 export const Item = ({id, name, price, image}) => {
 
