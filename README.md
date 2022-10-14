@@ -14,8 +14,7 @@ Se utiliza Firestore como base de datos, a la cual se realizan las peticiones pa
 Para la navegación se implementó Routing, aprovechando sus características para realizar filtrados por categoría de productos, y por ID de producto.
 Se incorporan eventos, Context, y técnicas de rendering.
 
-
-### Deploy: https://izzy-gamer-app.vercel.app/
+Deploy: https://izzy-gamer-app.vercel.app/
 
 ## Futuro del proyecto
 
