@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { ItemDetailContainer } from './components/ItemDetailContainer';
-import { ItemListContainer } from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
+import ItemListContainer from './components/ItemListContainer';
 import Cart from './components/Cart';
 import CartProvider from './context/CartProvider';
 import Order from './components/Order';

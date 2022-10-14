@@ -4,7 +4,7 @@ import MuiBadge from '@mui/material/Badge';
 import MuiShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useCart } from '../context/CartContext';
 
-export const CartWidget = () => {
+const CartWidget = () => {
 
   const item = useCart();
   
@@ -21,3 +21,5 @@ export const CartWidget = () => {
       
   )
 }
+
+export default CartWidget

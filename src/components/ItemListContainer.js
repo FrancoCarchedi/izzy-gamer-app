@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemList } from './ItemList';
-import { getItems } from '../utilities/getItems.js'
+import { getItems } from '../utilities/getItems.js';
 
-
-export const ItemListContainer = () => {
+const ItemListContainer = () => {
 
   const [items, setItem] = useState({
     data: [],
@@ -26,3 +25,5 @@ export const ItemListContainer = () => {
     <ItemList items={items.data.map(p => p.data)} loading={items.loading}/>
   )
 }
+
+export default ItemListContainer

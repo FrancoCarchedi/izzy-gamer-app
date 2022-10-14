@@ -14,7 +14,6 @@ const Layout = ({children}) => {
         flexDirection: 'column',
         minHeight: '100vh', 
         backgroundColor: '#f5f5f5', 
-        marginBottom: 2
         }}>
           {children}
         </MuiContainer>

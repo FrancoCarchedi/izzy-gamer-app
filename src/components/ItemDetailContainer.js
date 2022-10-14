@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import { ItemDetail } from './ItemDetail'
-import { getItem } from '../utilities/getItem.js'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemDetail from './ItemDetail';
+import { getItem } from '../utilities/getItem.js';
 
-export const ItemDetailContainer = () => {
+const ItemDetailContainer = () => {
 
   const [item, setItem] = useState({
     data: {},
@@ -30,3 +30,5 @@ export const ItemDetailContainer = () => {
     />
   )
 }
+
+export default ItemDetailContainer
